@@ -9,7 +9,7 @@ from core.models import Tag
 
 from recipe.serializers import TagSerializer
 
-TAGS_URL = reverse('recipe:tags-list')
+TAGS_URL = reverse('recipe:tag-list')
 
 
 class PublicTagsApiTests(TestCase):
@@ -26,7 +26,7 @@ class PublicTagsApiTests(TestCase):
 class PrivateTagsApiTest(TestCase):
     """Test the authorized user tags api"""
     def setUp(self):
-        user = get_user_model().objects.create_user(
+        self.user = get_user_model().objects.create_user(
             'test@test.com',
             'purple_plug_11'
         )
